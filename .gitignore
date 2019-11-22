@@ -1,11 +1,1 @@
-public
-apps/*/translations/*
-!apps/*/translations/src
 node_modules/
-.env
-.vscode/*
-.idea/vcs.xml
-.idea/workspace.xml
-dump.rdb
-.scannerwork/
-.nyc_output/
