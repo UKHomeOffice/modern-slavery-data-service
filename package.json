@@ -1,0 +1,30 @@
+{
+  "name": "modern-slavery-data-service",
+  "version": "0.0.1",
+  "description": "Provides a service layer to talk to a database to store and manage data for the main modern slavery app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UKHomeOffice/modern-slavery-data-service.git"
+  },
+  "keywords": [
+    "modern slavery",
+    "report modern slavery",
+    "report modern slavery data service",
+    "hof",
+    "home office"
+  ],
+  "author": "UK Home Office",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/UKHomeOffice/modern-slavery-data-service/issues"
+  },
+  "homepage": "https://github.com/UKHomeOffice/modern-slavery-data-service#readme",
+  "dependencies": {
+    "debug": "^4.1.1",
+    "pg": "^7.14.0"
+  }
+}
