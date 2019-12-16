@@ -4,7 +4,7 @@ require('dotenv').config();
 
 module.exports = {
   dataService: {
-    model: process.env.DATA_SERVICE_MODEL || 'postgres',
+    model: process.env.DATASERVICEMODEL || 'postgres',
   },
   postgres: {
     user: process.env.PGUSER || 'test',

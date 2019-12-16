@@ -18,20 +18,20 @@ The main modern slavery service has the ability to save an application or read a
 ## Install & Run <a name="install-and-run"></a>
 The application can be run on your local machine
 
-### Dependencies <a name="env-vars"></a>
+### Dependencies <a name="dependencies"></a>
 You will need to havethe following installed:
 
 [Node JS](https://nodejs.org/en/download/releases/) (Preferably the LTS Dubnium v10.x)
 
 [npm](https://www.npmjs.com/get-npm) (Latest verion)
 
-[Postrges](https://www.postgresql.org/download/) (Latest version)
+[PostgreSQL](https://www.postgresql.org/download/) (Latest version)
 
 ### Amend local config
 Setup your `.env` file to override the following variables based on the values you have setup on your local database installation.
 
 ```
-DATA_SERVICE_MODEL - The database used; by default this is set to 'postgres' the correlating model can be found in the modules folder '/modern-slavery-data-service/models/data-service-postgres.js'
+DATASERVICEMODEL - The database used; by default this is set to 'postgres' the correlating model can be found in the modules folder '/modern-slavery-data-service/models/data-service-postgres.js'
 
 PGUSER - The user name that will be used to connect to your database 
 
@@ -59,4 +59,4 @@ Then to run the service use:
 npm run dev
 ```
 
-Currently running this command will ONLY insert the `testData` in `/modern-slavery-data-service/test.js` into your database.
+Currently running this command will ONLY insert the `testData` variable found in `/modern-slavery-data-service/test.js` into your database.

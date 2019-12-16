@@ -3,9 +3,9 @@
 const dataService = require('./index');
 
 const testData = {
-  userEmail: 'test@test.com',
+  userEmail: 'test@example.com',
   jsonSavedData: {
-    'user-email': 'test@test.com',
+    'user-email': 'test@example.com',
     'fr-location': 'england',
   },
 };
