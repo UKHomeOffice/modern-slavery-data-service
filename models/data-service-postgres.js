@@ -1,7 +1,7 @@
 'use strict';
 
 const util = require('util');
-const config = require('../config');
+const config = require('../default-config');
 const DebugDB = require('../debuggers').database;
 
 const { Client } = require('pg');
@@ -43,11 +43,14 @@ async function connect() {
 async function write(data) {
   try {
     const clientConnection = await connect();
-    const { userEmail, jsonSavedData } = data;
+    // Postgre SQL table columns
+    const { userEmail, jsonSavedData, visitedPages } = data;
+    // Postgre SQL table
+    const { tableName } = config.postgres.database;
 
     const queryString = {
-      text: `INSERT INTO ${config.postgres.database.tableName}(useremail, jsonsaveddata) VALUES ($1, $2)`,
-      values: [userEmail, jsonSavedData],
+      text: `INSERT INTO ${tableName}(useremail, jsonsaveddata, visitedpages) VALUES ($1, $2, $3) RETURNING *`,
+      values: [userEmail, jsonSavedData, visitedPages],
     };
 
     const result = await clientConnection.query(queryString);
