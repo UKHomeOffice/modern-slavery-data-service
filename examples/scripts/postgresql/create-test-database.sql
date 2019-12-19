@@ -19,7 +19,7 @@ CREATE DATABASE test;
 /* Create test table */
 CREATE TABLE reports (
   ID SERIAL PRIMARY KEY,
-  useremail VARCHAR(255),
-  jsonsaveddata VARCHAR(10000),
-  visitedpages VARCHAR(10000),
+  user_email VARCHAR(255),
+  json_saved_data VARCHAR(10000),
+  visited_pages VARCHAR(10000),
 );

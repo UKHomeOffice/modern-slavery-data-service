@@ -15,12 +15,7 @@ let client;
  */
 async function connect() {
   if (!client) {
-    client = new Client({
-      host: config.postgresql.host,
-      port: config.postgresql.port,
-      user: config.postgresql.user,
-      password: config.postgresql.password,
-    });
+    client = new Client(config.postgresql);
   }
 
   try {
@@ -49,7 +44,7 @@ async function write(data) {
     const { tableName } = config.postgresql.database;
 
     const queryString = {
-      text: `INSERT INTO ${tableName}(useremail, jsonsaveddata, visitedpages) VALUES ($1, $2, $3) RETURNING *`,
+      text: `INSERT INTO ${tableName}(user_email, json_saved_data, visited_pages) VALUES ($1, $2, $3) RETURNING *`,
       values: [userEmail, jsonSavedData, visitedPages],
     };
 
