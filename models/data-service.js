@@ -7,7 +7,7 @@ let DataServiceModel;
 /**
  * Get data service module
  *
- * @param {object} [config=defaultConfig] - configuartion setting for the connection to a data store / database
+ * @param {object} [config=defaultConfig] - configuration setting for the connection to a data store / database
  *
  * The type of data service module selected will be defined in the config
  *
@@ -29,7 +29,7 @@ async function getDataServiceModel(config = defaultConfig) {
  * Write data to database
  *
  * @param {object} data - data object to be written
- * @param {object} config - configuartion setting for the connection to a data store / database
+ * @param {object} config - configuration setting for the connection to a data store / database
  *
  * If no config is supplied, the default config will be used.
  * @see defaultConfig
