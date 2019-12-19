@@ -44,7 +44,7 @@ If no configuration is defined then the service will fallback to the default val
 Setup your `.env` file in the root of this directory to override the following variables based on the values you have setup on your local database installation.
 
 ```
-DATASERVICEMODEL - The database used; by default this is set to 'postgres' the correlating model can be found in the modules folder '/modern-slavery-data-service/models/data-service-postgres.js'
+DATASERVICEMODEL - The database used; by default this is set to 'postgresql' the correlating model can be found in the modules folder '/modern-slavery-data-service/models/data-service-postgres.js'
 
 PGUSER - The user name that will be used to connect to your database 
 
