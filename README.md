@@ -56,7 +56,7 @@ PGDATABASE - The database name
 
 PGDATABASETABLE - The database table used (We are only using one table currently)
 
-PGPORT -  Port number to acces the database
+PGPORT -  Port number to access the database
 
 ```
 
