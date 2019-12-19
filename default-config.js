@@ -7,7 +7,7 @@ module.exports = {
   dataService: {
     model: process.env.DATASERVICEMODEL || 'postgresql',
   },
-  postgres: {
+  postgresql: {
     user: process.env.PGUSER || 'test',
     host: process.env.PGHOST || 'localhost',
     password: process.env.PGPASSWORD || 'test',
