@@ -1,6 +1,6 @@
 
 /* Example script to setup a Postgre SQL database for use with this service */
-/* The values used here are taken from the deafult values in default-config.js */
+/* The values used here are taken from the deafult values in config.js */
 
 /* Create a user and give user privileges to create a database */
 CREATE ROLE test WITH LOGIN PASSWORD 'test';
@@ -18,8 +18,8 @@ CREATE DATABASE test;
 
 /* Create test table */
 CREATE TABLE reports (
-  ID SERIAL PRIMARY KEY,
-  user_email VARCHAR(255),
-  json_saved_data VARCHAR(10000),
-  visited_pages VARCHAR(10000),
+  id SERIAL PRIMARY KEY,
+  user_email VARCHAR(15000),
+  json_saved_data VARCHAR(15000),
+  visited_pages VARCHAR(15000),
 );
