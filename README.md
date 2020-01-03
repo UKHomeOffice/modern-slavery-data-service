@@ -77,4 +77,4 @@ Then to run the service use:
 npm run dev
 ```
 
-Currently running this command will ONLY insert the `testData` variable found in `/modern-slavery-data-service/test.js` into your database.
+Currently running this command will ONLY insert the `testData` variable found in `/modern-slavery-data-service/test.js` into your database. Then subsequently try to read the same data that was inserted. This file is an example implementation of the read / write functionality offered by the service.
