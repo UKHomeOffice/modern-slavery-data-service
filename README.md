@@ -31,14 +31,14 @@ You will need to have the following installed:
 [PostgreSQL](https://www.postgresql.org/download/) ( v11.x )
 
 ### PostgreSQL setup <a name="postgresql-setup"></a>
-An example script for a PostgreSQL database and table can be found here: `examples/scripts/postgresql/create-test-database.sql` You can use the instructions within the script to create a database with the default configurations found in `default-config.js`.
+An example script for a PostgreSQL database and table can be found here: `examples/scripts/postgresql/create-test-database.sql` You can use the instructions within the script to create a database with the default configurations found in `config.js`.
 
 ### Configuration settings <a name="configuration-settings"></a>
 If you wish to use this service in isolation ([Standalone configuration settings](#standalone-configuration)), it can be run the using the configurations defined in the root of this service.
 
 Alternatively you can pass configs defined in the main application ([Main application configuration settings](#main-application-configuration)).
 
-If no configuration is defined then the service will fallback to the default values defined in `default-config.js`.
+If no configuration is defined then the service will fallback to the default values defined in `config.js`.
 
 #### Standalone configuration settings <a name="standalone-configuration"></a>
 Setup your `.env` file in the root of this directory to override the following variables based on the values you have setup on your local database installation.

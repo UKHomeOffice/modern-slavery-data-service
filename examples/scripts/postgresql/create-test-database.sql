@@ -1,6 +1,6 @@
 
 /* Example script to setup a Postgre SQL database for use with this service */
-/* The values used here are taken from the deafult values in default-config.js */
+/* The values used here are taken from the deafult values in config.js */
 
 /* Create a user and give user privileges to create a database */
 CREATE ROLE test WITH LOGIN PASSWORD 'test';

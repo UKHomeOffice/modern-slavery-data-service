@@ -1,7 +1,7 @@
 'use strict';
 
 const util = require('util');
-const config = require('../default-config');
+const config = require('../config');
 const DebugDB = require('../debuggers').database;
 
 const { Client } = require('pg');

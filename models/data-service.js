@@ -1,6 +1,6 @@
 'use strict';
 
-const defaultConfig = require('../default-config');
+const defaultConfig = require('../config');
 
 let DataServiceModel;
 
