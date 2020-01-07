@@ -13,7 +13,7 @@ module.exports = {
     user: process.env.PG_USER || 'test',
     host: process.env.PG_HOST || 'localhost',
     password: process.env.PG_PASSWORD || 'test',
-    database: 'test',
+    database: process.env.PG_DATABASE || 'test',
     additionalDatabaseConfig: {
       tableName: process.env.PG_DATABASE_TABLE || 'reports',
     },
