@@ -1,7 +1,7 @@
 'use strict';
-const Model = require('../../models/data-service-postgres');
+const Model = require('../../models/data-service-postgresql');
 
-describe('/modern-slavery-data-service/lib/models/data-service-postgres.js', () => {
+describe('/modern-slavery-data-service/lib/models/data-service-postgresql.js', () => {
   let instance;
 
   describe('write()', () => {
