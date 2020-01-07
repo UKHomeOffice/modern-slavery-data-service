@@ -40,4 +40,41 @@ describe('/modern-slavery-data-service/lib/models/data-service-postgresql.js', (
       }
     });
   });
+
+  describe('read()', () => {
+    beforeEach(() => {
+      instance = Model;
+      sinon.stub(Model, 'read');
+    });
+
+    afterEach(() => {
+      Model.read.restore();
+    });
+
+    it('should not throw an error when there are no issues found whilst reading from database', async() => {
+      try {
+        instance.read.returns(() => null);
+
+        const result = await instance.read();
+
+        expect(result).to.not.throw();
+      } catch (err) {
+          throw err;
+      }
+    });
+
+    it('should throw an error if there is an issue when attempting to read from database', async() => {
+      try {
+        instance.read.returns(() => {
+          throw new Error();
+        });
+
+        const result = await instance.read();
+
+        expect(result).to.throw();
+      } catch (err) {
+          throw err;
+      }
+    });
+  });
 });

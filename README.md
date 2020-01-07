@@ -78,3 +78,5 @@ npm run dev
 ```
 
 Currently running this command will ONLY insert the `testData` variable found in `/modern-slavery-data-service/test.js` into your database.
+
+After the data has been inserted, the application will then try to read back the same data from the database.
