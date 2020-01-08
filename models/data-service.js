@@ -40,6 +40,22 @@ async function write(data, config) {
   return (await getDataServiceModel(config)).write(data);
 }
 
+/**
+ * Read data from database
+ *
+ * @param {object} applicationId - id of the application sought
+ * @param {object} config - configuration setting for the connection to a data store / database
+ *
+ * If no config is supplied, the default config will be used.
+ * @see defaultConfig
+ *
+ * @returns {Promise} read query result
+ */
+async function read(applicationId, config) {
+  return (await getDataServiceModel(config)).read(applicationId);
+}
+
 module.exports = {
   write,
+  read,
 };
