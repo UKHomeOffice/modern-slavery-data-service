@@ -28,3 +28,34 @@ pipeline:
     when:
       branch: master
       event: push
+
+  image_to_quay:
+    group: tag
+    image: quay.io/ukhomeofficedigital/drone-docker
+    secrets:
+      - docker_password
+    environment:
+      - DOCKER_USERNAME=ukhomeofficedigital+modern_slavery_bot
+    registry: quay.io
+    branch: master
+    repo: quay.io/ukhomeofficedigital/modern-slavery-data-service
+    tags:
+      - ${DRONE_COMMIT_SHA}
+      - build-${DRONE_BUILD_NUMBER}
+      - latest
+    when:
+      branch: master
+      event: push
+
+  tag_to_quay:
+    environment:
+      - DOCKER_USERNAME=ukhomeofficedigital+modern_slavery_bot
+    image: quay.io/ukhomeofficedigital/drone-docker
+    registry: quay.io
+    repo: quay.io/ukhomeofficedigital/modern-slavery-data-service
+    secrets:
+      - docker_password
+    tags:
+      - ${DRONE_TAG}
+    when:
+      event: tag
