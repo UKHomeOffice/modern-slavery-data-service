@@ -21,8 +21,8 @@ module.exports = {
   },
   apiKeys: [
     {
-      user: process.env.APP_NAME || 'modern-slavery-app',
-      key: process.env.APP_API_KEY || 'D4ED43C0-8BD6-4FE2-B358-7C0E230D11EF',
+      user: process.env.APP_NAME,
+      key: process.env.APP_API_KEY,
     },
   ]
 };
