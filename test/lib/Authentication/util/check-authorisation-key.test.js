@@ -24,27 +24,4 @@ describe('lib/Authentication/util/check-authorisation-key.js', () => {
 
     expect(result).to.equal(expected);
   });
-
-  it('should return false if supplied credentials are invalid', () => {
-    const expected = false;
-
-    const inputs = {
-      validAuthenticationCredentials: {
-        key: 'password',
-        user: 'exampleUser'
-      },
-      req: {
-        authorization: {
-          basic: {
-            password: 'invalidPassword',
-            username: 'invalidUser',
-          }
-        }
-      },
-    };
-
-    const result = isAuthorisationKeyValid(inputs.validAuthenticationCredentials, inputs.req);
-
-    expect(result).to.equal(expected);
-  });
 });
