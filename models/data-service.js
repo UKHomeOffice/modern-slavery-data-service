@@ -43,7 +43,13 @@ async function write(data, config) {
 /**
  * Read data from database
  *
- * @param {object} applicationId - id of the application sought
+ * @param {number|string} identifierValue - identifier value to be used to get a record from the table such as an
+ * id or user email
+ * @param {string} [identifierType=id] - type of identifier (i.e. 'user_email' or 'id'); correlates to column
+ * names in table
+ *
+ * @param {string} tableName - name of table to make query on
+ *
  * @param {object} config - configuration setting for the connection to a data store / database
  *
  * If no config is supplied, the default config will be used.
@@ -51,8 +57,8 @@ async function write(data, config) {
  *
  * @returns {Promise} read query result
  */
-async function read(applicationId, config) {
-  return (await getDataServiceModel(config)).read(applicationId);
+async function read(identifierValue, identifierType, tableName, config) {
+  return (await getDataServiceModel(config)).read(identifierValue, identifierType, tableName);
 }
 
 module.exports = {
