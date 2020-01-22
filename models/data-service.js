@@ -29,6 +29,7 @@ async function getDataServiceModel(config = defaultConfig) {
  * Write data to database
  *
  * @param {object} data - data object to be written
+ * @param {string} tableName - name of table to make query on
  * @param {object} config - configuration setting for the connection to a data store / database
  *
  * If no config is supplied, the default config will be used.
@@ -36,8 +37,8 @@ async function getDataServiceModel(config = defaultConfig) {
  *
  * @returns {Promise} write query result
  */
-async function write(data, config) {
-  return (await getDataServiceModel(config)).write(data);
+async function write(data, tableName, config) {
+  return (await getDataServiceModel(config)).write(data, tableName);
 }
 
 /**
@@ -45,8 +46,7 @@ async function write(data, config) {
  *
  * @param {number|string} identifierValue - identifier value to be used to get a record from the table such as an
  * id or user email
- * @param {string} [identifierType=id] - type of identifier (i.e. 'user_email' or 'id'); correlates to column
- * names in table
+ * @param {string} columnName - the column name (i.e. 'user_email' or 'id');
  *
  * @param {string} tableName - name of table to make query on
  *
@@ -57,8 +57,8 @@ async function write(data, config) {
  *
  * @returns {Promise} read query result
  */
-async function read(identifierValue, identifierType, tableName, config) {
-  return (await getDataServiceModel(config)).read(identifierValue, identifierType, tableName);
+async function read(identifierValue, columnName, tableName, config) {
+  return (await getDataServiceModel(config)).read(identifierValue, columnName, tableName);
 }
 
 module.exports = {

@@ -1,8 +1,9 @@
 'use strict';
 
 const util = require('util');
-const config = require('../config');
-const DebugDB = require('../debuggers').database;
+const config = require('../../config');
+const DebugDB = require('../../debuggers').database;
+const PostgreSQLUtils = require('./util');
 
 const { Client } = require('pg');
 
@@ -39,17 +40,19 @@ async function connect() {
  * @returns {object} write query result
  */
 async function write(data, tableName) {
+  const {isObject, getPlaceholders} = PostgreSQLUtils;
+
   try {
     const clientConnection = await connect();
-    // Postgre SQL table columns
     const columns = Object.keys(data);
-    const getPlaceholders = (input) => {
-      const placeholders = input.reduce((accumalator, currentValue, index) => {
-        accumalator.push(`$${index + 1}`);
-      });
-      return placeholders;
-    };
-    const values = Object.values(data);
+    const values = Object.values(data).map((element) => {
+      // make sure all objects are in string format
+      if (isObject(element)) {
+        return JSON.stringify(element);
+      }
+      return element;
+    });
+
     const queryString = {
       text: `INSERT INTO ${tableName}(${columns}) VALUES (${getPlaceholders(columns)}) RETURNING *`,
       values: values,
@@ -74,18 +77,17 @@ async function write(data, tableName) {
  *
  * @param {number|string} identifierValue - identifier value to be used to get a record from the table such as an id or
  * user email
- * @param {string} [identifierType] - type of identifier (i.e. 'user_email' or 'id'); correlates to column names in
- * table
+ * @param {string} columnName - the column name (i.e. 'user_email' or 'id');
  * @param {string} tableName - name of table to make query on
  *
  * @returns {object} read query result
  */
-async function read(identifierValue, identifierType, tableName) {
+async function read(identifierValue, columnName, tableName) {
   try {
     const clientConnection = await connect();
 
     const queryString = {
-      text: `SELECT * FROM ${tableName} WHERE ${identifierType} = $1`,
+      text: `SELECT * FROM ${tableName} WHERE ${columnName} = $1`,
       values: [identifierValue],
     };
 
