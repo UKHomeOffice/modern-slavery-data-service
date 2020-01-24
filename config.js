@@ -19,7 +19,7 @@ module.exports = {
   },
   apiKeys: [
     {
-      user: process.env.APP_NAME,
+      user: process.env.APP_ID,
       key: process.env.APP_API_KEY,
     },
   ]

@@ -55,7 +55,7 @@ async function write(data, tableName) {
 
     const queryString = {
       text: `INSERT INTO ${tableName}(${columns}) VALUES (${getPlaceholders(columns)}) RETURNING *`,
-      values: values,
+      values,
     };
 
     DebugDB(`Report WRITE query ${util.inspect(queryString)}`);
