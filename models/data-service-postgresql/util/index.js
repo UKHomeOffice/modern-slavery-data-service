@@ -2,26 +2,15 @@
 
 /**
  * Get a list of placeholder variables to be used in a PostgreSQL query
+ *
  * @param {*} input - array of columns/values
  *
  * @returns {string} - string of placeholders
  */
 function getPlaceholders(input) {
-  const placeholders = input.reduce((accumalator, currentValue, index) => {
-    const placeholderString = `$${index + 1}`;
-    if (placeholderString === accumalator) {
-      return accumalator;
-    }
+  const placeholderArray = input.map((val, index) => '$' + (index + 1));
 
-    if (accumalator) {
-      accumalator += ', ';
-    }
-
-    const newPlaceholderString = (accumalator += `$${index + 1}`);
-
-    return newPlaceholderString;
-  }, '$1');
-  return placeholders;
+  return placeholderArray.join(', ');
 }
 
 /**

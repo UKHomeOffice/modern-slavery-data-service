@@ -77,7 +77,7 @@ Ensure your database is service is available and running.
 Then to run the service use:
 
 ```
-npm run start
+npm start
 ```
 
 This will start the server and expose the available API endpoints that can be found in `lib/Routes`
