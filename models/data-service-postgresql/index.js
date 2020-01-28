@@ -1,8 +1,9 @@
 'use strict';
 
 const util = require('util');
-const config = require('../config');
-const DebugDB = require('../debuggers').database;
+const config = require('../../config');
+const DebugDB = require('../../debuggers').database;
+const PostgreSQLUtils = require('./util');
 
 const { Client } = require('pg');
 
@@ -34,20 +35,27 @@ async function connect() {
  * Write data to Database
  *
  * @param {object} data - data object to be written
+ * @param {string} tableName - name of table to make query on
  *
  * @returns {object} write query result
  */
-async function write(data) {
+async function write(data, tableName) {
+  const {isObject, getPlaceholders} = PostgreSQLUtils;
+
   try {
     const clientConnection = await connect();
-    // Postgre SQL table columns
-    const { userEmail, jsonSavedData, visitedPages } = data;
-    // Postgre SQL table
-    const { tableName } = config.postgresql.additionalDatabaseConfig;
+    const columns = Object.keys(data);
+    const values = Object.values(data).map((element) => {
+      // make sure all objects are in string format
+      if (isObject(element)) {
+        return JSON.stringify(element);
+      }
+      return element;
+    });
 
     const queryString = {
-      text: `INSERT INTO ${tableName}(user_email, json_saved_data, visited_pages) VALUES ($1, $2, $3) RETURNING *`,
-      values: [userEmail, jsonSavedData, visitedPages],
+      text: `INSERT INTO ${tableName}(${columns}) VALUES (${getPlaceholders(columns)}) RETURNING *`,
+      values,
     };
 
     DebugDB(`Report WRITE query ${util.inspect(queryString)}`);
@@ -67,20 +75,20 @@ async function write(data) {
 /**
  * Read data from Database
  *
- * @param {object} applicationId - id of the application to be sought
+ * @param {number|string} identifierValue - identifier value to be used to get a record from the table such as an id or
+ * user email
+ * @param {string} columnName - the column name (i.e. 'user_email' or 'id');
+ * @param {string} tableName - name of table to make query on
  *
  * @returns {object} read query result
  */
-async function read(applicationId) {
+async function read(identifierValue, columnName, tableName) {
   try {
     const clientConnection = await connect();
 
-    // Postgre SQL table
-    const { tableName } = config.postgresql.additionalDatabaseConfig;
-
     const queryString = {
-      text: `SELECT * FROM ${tableName} WHERE id = $1`,
-      values: [applicationId],
+      text: `SELECT * FROM ${tableName} WHERE ${columnName} = $1`,
+      values: [identifierValue],
     };
 
     DebugDB(`Report READ query ${util.inspect(queryString)}`);

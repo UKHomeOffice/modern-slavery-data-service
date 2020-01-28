@@ -1,5 +1,5 @@
 'use strict';
 
-const dataService = require('./models/data-service');
+const server = require('./lib/server');
 
-module.exports = dataService;
+module.exports = server;

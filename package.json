@@ -4,6 +4,7 @@
   "description": "Provides a service layer to talk to a database to store and manage data for the main modern slavery app",
   "main": "index.js",
   "scripts": {
+    "start": "DEBUG=* node lib/server.js",
     "dev": "DEBUG=* node test.js",
     "test": "npm-run-all test:unit lint",
     "test:unit": "_mocha",
@@ -35,7 +36,8 @@
     "dotenv": "^8.2.0",
     "npm-run-all": "^4.1.5",
     "pg": "^7.14.0",
-    "restify": "^8.5.1"
+    "restify": "^8.5.1",
+    "restify-errors": "^8.0.2"
   },
   "devDependencies": {
     "chai": "^4.2.0",
