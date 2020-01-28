@@ -4,8 +4,8 @@
   "description": "Provides a service layer to talk to a database to store and manage data for the main modern slavery app",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=* node lib/server.js",
-    "dev": "DEBUG=* node test.js",
+    "start": "node index.js",
+    "dev": "DEBUG=* node index.js",
     "test": "npm-run-all test:unit lint",
     "test:unit": "_mocha",
     "test:coverage": "nyc npm run test:unit ",
