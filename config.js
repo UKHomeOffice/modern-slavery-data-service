@@ -8,7 +8,7 @@ dotenv.config();
 module.exports = {
   dataService: {
     model: process.env.DATA_SERVICE_MODEL || 'postgresql',
-    port: process.env.DATA_SERVICE_PORT || 4444,
+    port: process.env.DATA_SERVICE_PORT || 8080,
   },
   postgresql: {
     user: process.env.PG_USER || 'test',

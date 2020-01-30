@@ -2,7 +2,7 @@
 
 const util = require('util');
 const config = require('../../config');
-const DebugDB = require('../../debuggers').database;
+const debugDB = require('../../debuggers').database;
 const PostgreSQLUtils = require('./util');
 
 const { Client } = require('pg');
@@ -20,10 +20,10 @@ async function connect() {
 
     try {
       await client.connect();
-      DebugDB('Connected to database');
+      debugDB('Connected to database');
       return client;
     } catch (err) {
-      DebugDB(`CONNECT ERROR: ${err.stack}`);
+      debugDB(`CONNECT ERROR: ${err.stack}`);
       throw err;
     }
   }
@@ -58,15 +58,15 @@ async function write(data, tableName) {
       values,
     };
 
-    DebugDB(`Report WRITE query ${util.inspect(queryString)}`);
+    debugDB(`Report WRITE query ${util.inspect(queryString)}`);
 
     const result = await clientConnection.query(queryString);
 
-    DebugDB(`Report created ${util.inspect(result)}`);
+    debugDB(`Report created ${util.inspect(result)}`);
 
     return result;
   } catch (err) {
-      DebugDB(`WRITE ERROR ${err.stack}`);
+      debugDB(`WRITE ERROR ${err.stack}`);
 
       throw err;
   }
@@ -91,15 +91,15 @@ async function read(identifierValue, columnName, tableName) {
       values: [identifierValue],
     };
 
-    DebugDB(`Report READ query ${util.inspect(queryString)}`);
+    debugDB(`Report READ query ${util.inspect(queryString)}`);
 
     const result = await clientConnection.query(queryString);
 
-    DebugDB(`Report retrieved ${util.inspect(result)}`);
+    debugDB(`Report retrieved ${util.inspect(result)}`);
 
     return result;
   } catch (err) {
-      DebugDB(`READ ERROR ${err.stack}`);
+      debugDB(`READ ERROR ${err.stack}`);
       throw err;
   }
 }
