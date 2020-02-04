@@ -6,6 +6,8 @@ const globalNamespace = 'data-service';
 
 const database = debug(`${globalNamespace}:database`);
 
+const server = debug(`${globalNamespace}:server`);
+
 /**
  * The debug module has a namespace feature that allows you to enable or disable debug functions in groups.
  *
@@ -19,4 +21,5 @@ const database = debug(`${globalNamespace}:database`);
  */
 module.exports = {
   database,
+  server,
 };

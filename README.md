@@ -16,7 +16,8 @@ The main modern slavery service has the ability to save an application or read a
     - [Configuration settings](#configuration-settings)
       - [Standalone configuration settings](#standalone-configuration)
       - [Main application configuration settings](#main-application-configuration)
-    - [Running the service in isolation](#running-the-service-in-isolation)
+    - [Running the service](#running-the-service)
+    - [Adding Routes](#adding-routes)
 
 ## Install & Run <a name="install-and-run"></a>
 The application can be run on your local machine
@@ -38,13 +39,15 @@ If you wish to use this service in isolation ([Standalone configuration settings
 
 Alternatively you can pass configs defined in the main application ([Main application configuration settings](#main-application-configuration)).
 
-If no configuration is defined then the service will fallback to the default values defined in `config.js`.
+If no configuration is defined then the service will fallback to the default values defined in `config.js`. The exceptions to this rule would be the `APP_ID` & `APP_API_KEY`
 
 #### Standalone configuration settings <a name="standalone-configuration"></a>
 Setup your `.env` file in the root of this directory to override the following variables based on the values you have setup on your local database installation.
 
 ```
 DATA_SERVICE_MODEL - The database used; by default this is set to 'postgresql' the correlating model can be found in the modules folder '/modern-slavery-data-service/models/data-service-postgres.js'
+
+DATA_SERVICE_PORT - Port number app will be running on
 
 PG_USER - The user name that will be used to connect to your database 
 
@@ -54,9 +57,11 @@ PG_HOST - The host address where the database can be found
 
 PG_DATABASE - The database name
 
-PG_DATABASE_TABLE - The database table used (We are only using one table currently)
-
 PG_PORT -  Port number to access the database
+
+APP_ID - the application id to be used with this service (this is mandatory)
+
+APP_API_KEY - the key assigned to the specified APP_NAME (this is mandatory)
 
 ```
 
@@ -67,16 +72,22 @@ If this service used in conjunction with the [modern slavery](https://github.com
 
 Add the environment variables defined in `.env.example` to the `.env` file in the root of the [modern slavery](https://github.com/UKHomeOffice/modern-slavery) application and they can be passed on to this service.
 
-### Running the service in isolation <a name="running-the-service-in-isolation"></a>
+### Running the service <a name="running-the-service"></a>
 
 Ensure your database is service is available and running.
 
 Then to run the service use:
 
 ```
-npm run dev
+npm start
 ```
 
-Currently running this command will ONLY insert the `testData` variable found in `/modern-slavery-data-service/test.js` into your database.
+This will start the server and expose the available API endpoints that can be found in `lib/Routes`
 
-After the data has been inserted, the application will then try to read back the same data from the database.
+### Adding Routes <a name="adding-routes"></a>
+
+To add additional routes you need to
+
+- Check `models/data-service-postgresql/index.js` and/or `models/data-service.js` to verify to correct CRUD functions are available; create a new function if required.
+
+- Under the `lib/Routes` directory you will find an `lib/Routes/index.js` file that imports all the routes required for the services you can add/edit the files in that directory to suit your purpose.
