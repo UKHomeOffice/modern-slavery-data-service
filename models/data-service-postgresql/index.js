@@ -1,38 +1,17 @@
 'use strict';
 
 const util = require('util');
-const config = require('../../config');
 const debugDB = require('../../debuggers').database;
 const PostgreSQLUtils = require('./util');
-
-const { Client } = require('pg');
-
-let client;
-
-/**
- * Connect to Database
- *
- * @returns {void} object containing the database connection
- */
-async function connect() {
-  if (!client) {
-    client = new Client(config.postgresql);
-
-    try {
-      await client.connect();
-      debugDB('Connected to database');
-      return client;
-    } catch (err) {
-      debugDB(`CONNECT ERROR: ${err.stack}`);
-      throw err;
-    }
-  }
-
-  return client;
-}
+const client = require('../knex');
 
 /**
  * Write data to Database
+ *
+ * If the data has column values which are objects they will be converted to a string for storage
+ * e.g.
+ * data = {columnName: {value: 10}} will become
+ * data = {columnName: 'value: 10'}
  *
  * @param {object} data - data object to be written
  * @param {string} tableName - name of table to make query on
@@ -40,27 +19,21 @@ async function connect() {
  * @returns {object} write query result
  */
 async function write(data, tableName) {
-  const {isObject, getPlaceholders} = PostgreSQLUtils;
+  const {isObject} = PostgreSQLUtils;
 
   try {
-    const clientConnection = await connect();
-    const columns = Object.keys(data);
-    const values = Object.values(data).map((element) => {
-      // make sure all objects are in string format
-      if (isObject(element)) {
-        return JSON.stringify(element);
-      }
-      return element;
-    });
+    // make sure all column values that are objects are converted to string format
+    let newDataObject = Object.assign(
+      {},
+      ...Object.entries(data).map(([columnName, columnValue]) => {
+        const formattedValue = isObject(columnValue) ? JSON.stringify(columnValue) : columnValue;
+        return ({[columnName]: formattedValue});
+      }),
+    );
 
-    const queryString = {
-      text: `INSERT INTO ${tableName}(${columns}) VALUES (${getPlaceholders(columns)}) RETURNING *`,
-      values,
-    };
+    debugDB(`Report WRITE query object ${util.inspect(newDataObject)}`);
 
-    debugDB(`Report WRITE query ${util.inspect(queryString)}`);
-
-    const result = await clientConnection.query(queryString);
+    const result = await client(tableName).insert(newDataObject);
 
     debugDB(`Report created ${util.inspect(result)}`);
 
@@ -84,16 +57,13 @@ async function write(data, tableName) {
  */
 async function read(identifierValue, columnName, tableName) {
   try {
-    const clientConnection = await connect();
-
-    const queryString = {
-      text: `SELECT * FROM ${tableName} WHERE ${columnName} = $1`,
-      values: [identifierValue],
+    const queryObject = {
+      [columnName]: identifierValue
     };
 
-    debugDB(`Report READ query ${util.inspect(queryString)}`);
+    debugDB(`Report READ query object ${util.inspect(queryObject)}`);
 
-    const result = await clientConnection.query(queryString);
+    const result = await client(tableName).where(queryObject);
 
     debugDB(`Report retrieved ${util.inspect(result)}`);
 

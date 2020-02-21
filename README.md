@@ -74,7 +74,7 @@ Add the environment variables defined in `.env.example` to the `.env` file in th
 
 ### Running the service <a name="running-the-service"></a>
 
-Ensure your database is service is available and running.
+Ensure your database is service is available and running with the correct user & passwords found in `config.js`.
 
 Then to run the service use:
 
