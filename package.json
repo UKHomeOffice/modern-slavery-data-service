@@ -4,14 +4,17 @@
   "description": "Provides a service layer to talk to a database to store and manage data for the main modern slavery app",
   "main": "index.js",
   "scripts": {
-    "dev": "DEBUG=* node server.js",
+    "start": "npm-run-all setup-db start-server",
+    "dev": "DEBUG=* npm-run-all setup-db start-server",
+    "start-server": "node server.js",
     "test": "npm-run-all test:unit lint",
     "test:unit": "_mocha",
     "test:coverage": "nyc npm run test:unit ",
     "lint": "eslint .",
     "migration:create": "knex  --knexfile ./models/knex/knexfile.js migrate:make data-service-migration",
     "migration": "knex --knexfile ./models/knex/knexfile.js migrate:latest --debug",
-    "migration:rollback": "knex --knexfile ./models/knex/knexfile.js migrate:rollback --debug"
+    "migration:rollback": "knex --knexfile ./models/knex/knexfile.js migrate:rollback --debug",
+    "setup-db": "npm-run-all migration:rollback migration"
   },
   "pre-commit": [
     "test"
