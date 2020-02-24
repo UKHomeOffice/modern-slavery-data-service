@@ -59,6 +59,10 @@ PG_DATABASE - The database name
 
 PG_PORT -  Port number to access the database
 
+PG_MIN_POOL - Minimum number of connections available
+
+PG_MAX_POOL -  Maximum number of connections available
+
 APP_ID - the application id to be used with this service (this is mandatory)
 
 APP_API_KEY - the key assigned to the specified APP_NAME (this is mandatory)

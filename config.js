@@ -16,6 +16,8 @@ module.exports = {
     password: process.env.PG_PASSWORD || 'test',
     database: process.env.PG_DATABASE || 'test',
     port: process.env.PG_PORT || 5432,
+    minPool: process.env.PG_MIN_POOL || 2,
+    maxPool: process.env.PG_MAX_POOL || 10,
   },
   apiKeys: [
     {
