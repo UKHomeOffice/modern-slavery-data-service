@@ -55,9 +55,7 @@ PG_PASSWORD - The password used to access the database
 
 PG_HOST - The host address where the database can be found
 
-PG_DATABASE - The database name
-
-DB_NAME - The default database name (We use this to create the database specified in PG_DATABASE)
+DB_NAME - The default database name
 
 PG_PORT -  Port number to access the database
 
