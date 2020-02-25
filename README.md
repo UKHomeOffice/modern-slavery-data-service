@@ -32,7 +32,15 @@ You will need to have the following installed:
 [PostgreSQL](https://www.postgresql.org/download/) ( v11.x )
 
 ### PostgreSQL setup <a name="postgresql-setup"></a>
-An example script for a PostgreSQL database and table can be found here: `examples/scripts/postgresql/create-test-database.sql` You can use the instructions within the script to create a database with the default configurations found in `config.js`.
+The database tables will automatically be created when running the commands below.
+```
+npm run start
+```
+or
+```
+npm run dev
+```
+
 
 ### Configuration settings <a name="configuration-settings"></a>
 If you wish to use this service in isolation ([Standalone configuration settings](#standalone-configuration)), it can be run the using the configurations defined in the root of this service.
@@ -55,7 +63,7 @@ PG_PASSWORD - The password used to access the database
 
 PG_HOST - The host address where the database can be found
 
-PG_DATABASE - The database name
+DB_NAME - The default database name
 
 PG_PORT -  Port number to access the database
 

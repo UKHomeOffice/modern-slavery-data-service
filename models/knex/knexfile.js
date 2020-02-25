@@ -4,16 +4,16 @@ const config = require('../../config');
 
 const { postgresql, dataService } = config;
 
-const { host, user, password, database, minPool, maxPool } = postgresql;
+const { host, user, password, minPool, maxPool, database } = postgresql;
 const { model } = dataService;
 
 module.exports = {
   development: {
     client: model,
     connection: {
-      database: 'test',
       user: 'test',
       password: 'test',
+      database: database,
     },
     pool: {
       min: minPool,
