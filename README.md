@@ -57,6 +57,8 @@ PG_HOST - The host address where the database can be found
 
 PG_DATABASE - The database name
 
+DB_NAME - The default database name (We use this to create the database specified in PG_DATABASE)
+
 PG_PORT -  Port number to access the database
 
 PG_MIN_POOL - Minimum number of connections available

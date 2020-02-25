@@ -14,6 +14,7 @@ module.exports = {
     user: process.env.PG_USER || 'test',
     host: process.env.PG_HOST || 'localhost',
     password: process.env.PG_PASSWORD || 'test',
+    defaultDatabase: process.env.DB_NAME || 'postgres',
     database: process.env.PG_DATABASE || 'test',
     port: process.env.PG_PORT || 5432,
     minPool: process.env.PG_MIN_POOL || 2,

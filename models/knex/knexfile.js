@@ -2,43 +2,12 @@
 
 const config = require('../../config');
 
-const { postgresql, dataService } = config;
+const { database } = config.postgresql;
 
-const { host, user, password, database, minPool, maxPool } = postgresql;
-const { model } = dataService;
+let knexfileInit = require('./knexfile-init');
 
-module.exports = {
-  development: {
-    client: model,
-    connection: {
-      database: 'test',
-      user: 'test',
-      password: 'test',
-    },
-    pool: {
-      min: minPool,
-      max: maxPool,
-    },
-    migrations: {
-      tableName: 'data_service_migrations',
-      path: './migrations',
-    }
-  },
-  production: {
-    client: model,
-    connection: {
-      host: host,
-      user: user,
-      password: password,
-      database: database,
-    },
-    pool: {
-      min: minPool,
-      max: maxPool,
-    },
-    migrations: {
-      tableName: 'data_service_migrations',
-      path: './migrations',
-    }
-  }
-};
+// Override default database with one specified in config
+knexfileInit.development.connection.database = database;
+knexfileInit.production.connection.database = database;
+
+module.exports = knexfileInit;
