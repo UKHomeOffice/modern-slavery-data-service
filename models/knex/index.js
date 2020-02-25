@@ -8,7 +8,7 @@ const knex = require('knex');
  * @param {bool} [init=false] - optional parameter to determine which knexfile should be used
  *
  * If set to true this will use the models/knex/knexfile-init.js file
- * This would mean we would connect using knex without a specified database.
+ * This would mean we would connect to knex with the database.
  *
  * The reason for this is; so we can create the initial database if it does not already exist.
  *

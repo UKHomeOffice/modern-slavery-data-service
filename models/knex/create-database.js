@@ -1,6 +1,6 @@
 'use strict';
 
-// setup knex to read knexfile in which no database is specified
+// setup knex to read knexfile in which the default database is specified
 const knex = require('./')(true);
 const config = require('../../config');
 const debugDB = require('../../debuggers').database;
