@@ -1,6 +1,6 @@
 {
   "name": "modern-slavery-data-service",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Provides a service layer to talk to a database to store and manage data for the main modern slavery app",
   "main": "index.js",
   "scripts": {
