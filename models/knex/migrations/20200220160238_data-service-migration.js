@@ -11,7 +11,7 @@ module.exports.up = (knex) => {
     tableReference.string('user_email').notNull();
     tableReference.string('json_saved_data').nullable();
     tableReference.string('visited_pages').nullable();
-});
+  });
 };
 
 module.exports.down = (knex) => {
