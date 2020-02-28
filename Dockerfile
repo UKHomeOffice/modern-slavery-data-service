@@ -13,4 +13,5 @@ COPY . /app
 
 USER 999
 
-CMD npm start
+#CMD npm start // Disabled to see dubugger logs
+CMD npm run dev
