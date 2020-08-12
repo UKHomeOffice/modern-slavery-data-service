@@ -1,65 +1,28 @@
 pipeline:
   npm-audit:
-    group: test
     image: node:12
     commands:
       - npm audit --production --audit-level=moderate
     when:
       event: push
 
-  image_to_quay_server:
-    group: tag
-    image: quay.io/ukhomeofficedigital/drone-docker
+  image_to_quay:
+    image: docker:19
     secrets:
-      - docker_password
+      - DOCKER_PASSWORD
     environment:
-      - DOCKER_USERNAME=ukhomeofficedigital+modern_slavery_bot
-    registry: quay.io
-    branch: master
-    repo: quay.io/ukhomeofficedigital/modern-slavery-data-service
-    dockerfile: Dockerfile
-    tags:
-      - server-${DRONE_COMMIT_SHA}
-      - server-build-${DRONE_BUILD_NUMBER}
-      - server-latest
-    when:
-      branch: master
-      event: push
-
-  image_to_quay_alerts:
-    group: tag
-    image: quay.io/ukhomeofficedigital/drone-docker
-    secrets:
-      - docker_password
-    environment:
-      - DOCKER_USERNAME=ukhomeofficedigital+modern_slavery_bot
-    registry: quay.io
-    branch: master
-    repo: quay.io/ukhomeofficedigital/modern-slavery-data-service
-    dockerfile: Dockerfile-alerts
-    tags:
-      - alerts-${DRONE_COMMIT_SHA}
-      - alerts-build-${DRONE_BUILD_NUMBER}
-      - alerts-latest
-    when:
-      branch: master
-      event: push
-
-  image_to_quay_migrations:
-    group: tag
-    image: quay.io/ukhomeofficedigital/drone-docker
-    secrets:
-      - docker_password
-    environment:
-      - DOCKER_USERNAME=ukhomeofficedigital+modern_slavery_bot
-    registry: quay.io
-    branch: master
-    repo: quay.io/ukhomeofficedigital/modern-slavery-data-service
-    dockerfile: Dockerfile-migrations
-    tags:
-      - migrations-${DRONE_COMMIT_SHA}
-      - migrations-build-${DRONE_BUILD_NUMBER}
-      - migrations-latest
+      - DOCKER_HOST=tcp://172.17.0.1:2375
+    commands:
+      - docker build -t server-$${DRONE_COMMIT_SHA} .
+      - docker build -f Dockerfile-alerts -t alerts-$${DRONE_COMMIT_SHA} .
+      - docker build -f Dockerfile-migrations -t migrations-$${DRONE_COMMIT_SHA} .
+      - docker login -u="ukhomeofficedigital+modern_slavery_bot" -p=$${DOCKER_PASSWORD} quay.io
+      - docker tag server-$${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/modern-slavery-data-service:server-$${DRONE_COMMIT_SHA}
+      - docker tag alerts-$${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/modern-slavery-data-service:alerts-$${DRONE_COMMIT_SHA}
+      - docker tag migrations-$${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/modern-slavery-data-service:migrations-$${DRONE_COMMIT_SHA}
+      - docker push quay.io/ukhomeofficedigital/modern-slavery-data-service:server-$${DRONE_COMMIT_SHA}
+      - docker push quay.io/ukhomeofficedigital/modern-slavery-data-service:alerts-$${DRONE_COMMIT_SHA}
+      - docker push quay.io/ukhomeofficedigital/modern-slavery-data-service:migrations-$${DRONE_COMMIT_SHA}
     when:
       branch: master
       event: push
