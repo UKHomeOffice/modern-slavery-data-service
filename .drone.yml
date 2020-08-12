@@ -17,6 +17,7 @@ pipeline:
     registry: quay.io
     branch: master
     repo: quay.io/ukhomeofficedigital/modern-slavery-data-service
+    dockerfile: Dockerfile
     tags:
       - server-${DRONE_COMMIT_SHA}
       - server-build-${DRONE_BUILD_NUMBER}
