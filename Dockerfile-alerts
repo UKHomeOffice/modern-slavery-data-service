@@ -13,4 +13,4 @@ COPY package-lock.json /app/package-lock.json
 RUN npm ci --production --no-optional --ignore-scripts
 COPY . /app
 
-CMD npm start
+CMD npm run alerts

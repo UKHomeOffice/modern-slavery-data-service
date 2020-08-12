@@ -1,35 +1,13 @@
 pipeline:
   npm-audit:
     group: test
-    image: node:10
+    image: node:12
     commands:
       - npm audit --production --audit-level=moderate
     when:
       event: push
 
-  test:
-    group: test
-    image: node:10
-    commands:
-      - npm ci
-      - npm test
-    when:
-      event:
-        - push
-        - pull_request
-
-  build:
-    group: build
-    image: docker:18.03.1-ce
-    environment:
-      - DOCKER_HOST=tcp://172.17.0.1:2375
-    commands:
-      - docker build -t ms-data-service-$${DRONE_COMMIT_SHA} .
-    when:
-      branch: master
-      event: push
-
-  image_to_quay:
+  image_to_quay_server:
     group: tag
     image: quay.io/ukhomeofficedigital/drone-docker
     secrets:
@@ -40,35 +18,60 @@ pipeline:
     branch: master
     repo: quay.io/ukhomeofficedigital/modern-slavery-data-service
     tags:
-      - ${DRONE_COMMIT_SHA}
-      - build-${DRONE_BUILD_NUMBER}
-      - latest
+      - server-${DRONE_COMMIT_SHA}
+      - server-build-${DRONE_BUILD_NUMBER}
+      - server-latest
     when:
       branch: master
       event: push
 
-  tag_to_quay:
-    environment:
-      - DOCKER_USERNAME=ukhomeofficedigital+modern_slavery_bot
+  image_to_quay_alerts:
+    group: tag
     image: quay.io/ukhomeofficedigital/drone-docker
-    registry: quay.io
-    repo: quay.io/ukhomeofficedigital/modern-slavery-data-service
     secrets:
       - docker_password
-    tags:
-      - ${DRONE_TAG}
-    when:
-      event: tag
-
-  trigger_deploy_to_dev:
-    image: quay.io/ukhomeofficedigital/drone-trigger:v0.3.0
-    drone_server: https://drone-gitlab.acp.homeoffice.gov.uk
-    repo: modern-slavery/kube-modern-slavery
-    secrets:
-      - drone_token
+    environment:
+      - DOCKER_USERNAME=ukhomeofficedigital+modern_slavery_bot
+    registry: quay.io
     branch: master
-    deploy_to: dev
-    params: "DATA_SERVICE_VERSION=${DRONE_COMMIT_SHA}"
+    repo: quay.io/ukhomeofficedigital/modern-slavery-data-service
+    dockerfile: Dockerfile-alerts
+    tags:
+      - alerts-${DRONE_COMMIT_SHA}
+      - alerts-build-${DRONE_BUILD_NUMBER}
+      - alerts-latest
     when:
       branch: master
       event: push
+
+  image_to_quay_migrations:
+    group: tag
+    image: quay.io/ukhomeofficedigital/drone-docker
+    secrets:
+      - docker_password
+    environment:
+      - DOCKER_USERNAME=ukhomeofficedigital+modern_slavery_bot
+    registry: quay.io
+    branch: master
+    repo: quay.io/ukhomeofficedigital/modern-slavery-data-service
+    dockerfile: Dockerfile-migraions
+    tags:
+      - migrations-${DRONE_COMMIT_SHA}
+      - migrations-build-${DRONE_BUILD_NUMBER}
+      - migrations-latest
+    when:
+      branch: master
+      event: push
+
+  # trigger_deploy_to_dev:
+  #   image: quay.io/ukhomeofficedigital/drone-trigger:v0.3.0
+  #   drone_server: https://drone-gitlab.acp.homeoffice.gov.uk
+  #   repo: modern-slavery/kube-modern-slavery
+  #   secrets:
+  #     - drone_token
+  #   branch: master
+  #   deploy_to: dev
+  #   params: "DATA_SERVICE_VERSION=${DRONE_COMMIT_SHA}"
+  #   when:
+  #     branch: master
+  #     event: push
