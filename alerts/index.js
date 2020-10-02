@@ -73,7 +73,7 @@ setInterval(() => {
         return;
       } else if (moment().diff(report.updated_at, 'days') > FIRST_ALERT_TIMEOUT) {
         // report is coming up for deletion
-        logger.info('7 day warning for report', {id: report.id});
+        logger.info(`${FIRST_ALERT_TIMEOUT} day warning for report`, {id: report.id});
 
         promises.push(notifyClient.sendEmail(SOON_TO_BE_DELETED_TEMPLATE, report.session['user-email'], {
           personalisation: {

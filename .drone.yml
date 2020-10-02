@@ -15,27 +15,11 @@ pipeline:
     commands:
       - docker build -t server-$${DRONE_COMMIT_SHA} .
       - docker build -f Dockerfile-alerts -t alerts-$${DRONE_COMMIT_SHA} .
-      - docker build -f Dockerfile-migrations -t migrations-$${DRONE_COMMIT_SHA} .
       - docker login -u="ukhomeofficedigital+modern_slavery_bot" -p=$${DOCKER_PASSWORD} quay.io
       - docker tag server-$${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/modern-slavery-data-service:server-$${DRONE_COMMIT_SHA}
       - docker tag alerts-$${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/modern-slavery-data-service:alerts-$${DRONE_COMMIT_SHA}
-      - docker tag migrations-$${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/modern-slavery-data-service:migrations-$${DRONE_COMMIT_SHA}
       - docker push quay.io/ukhomeofficedigital/modern-slavery-data-service:server-$${DRONE_COMMIT_SHA}
       - docker push quay.io/ukhomeofficedigital/modern-slavery-data-service:alerts-$${DRONE_COMMIT_SHA}
-      - docker push quay.io/ukhomeofficedigital/modern-slavery-data-service:migrations-$${DRONE_COMMIT_SHA}
     when:
       branch: master
       event: push
-
-  # trigger_deploy_to_dev:
-  #   image: quay.io/ukhomeofficedigital/drone-trigger:v0.3.0
-  #   drone_server: https://drone-gitlab.acp.homeoffice.gov.uk
-  #   repo: modern-slavery/kube-modern-slavery
-  #   secrets:
-  #     - drone_token
-  #   branch: master
-  #   deploy_to: dev
-  #   params: "DATA_SERVICE_VERSION=${DRONE_COMMIT_SHA}"
-  #   when:
-  #     branch: master
-  #     event: push
