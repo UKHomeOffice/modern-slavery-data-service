@@ -71,7 +71,8 @@ setInterval(() => {
         }));
         promises.push(knex(tableName).where({id: report.id}).del());
         return;
-      } else if (moment().diff(report.updated_at, 'days') > FIRST_ALERT_TIMEOUT) {
+      } else if (!report.session.hasOwnProperty('firstAlert') &&
+        moment().diff(report.updated_at, 'days') > FIRST_ALERT_TIMEOUT) {
         // report is coming up for deletion
         logger.info(`${FIRST_ALERT_TIMEOUT} day warning for report`, {id: report.id});
 
@@ -82,6 +83,8 @@ setInterval(() => {
             url: URL
           }
         }));
+
+        report.session.firstAlert = true;
       } else {
         return;
       }
