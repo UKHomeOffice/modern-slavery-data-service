@@ -8,7 +8,8 @@ const json = require('morgan-json');
 const format = json({
   short: ':method :url :status',
   length: ':res[content-length]',
-  'response-time': ':response-time ms'
+  'response-time': ':response-time ms',
+  timestamp: ':date[iso]'
 });
 const app = express();
 const { getReports, getId, create, del } = require('./controllers/reports');
