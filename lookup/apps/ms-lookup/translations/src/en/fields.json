@@ -1,0 +1,28 @@
+{
+  "query": {
+		"legend": " ",
+		"options": {
+			"session": {
+        "label": "Data held in a saved session"
+			},
+			"email": {
+				"label": "First responder email query"
+			}
+		},
+		"validation": {
+			"required": "Select the type of query"
+		}
+	},
+  "session": {
+    "label": " ",
+    "hint": "For example, a reference or name",
+    "validate": "required"
+  },
+  "email": {
+    "label": " ",
+    "validation": {
+      "required": "Select the type of query",
+      "email": "Please enter a valid email address"
+		}
+  }
+}

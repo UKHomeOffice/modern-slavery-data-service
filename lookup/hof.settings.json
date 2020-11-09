@@ -1,0 +1,9 @@
+{
+  "theme": "govuk",
+  "routes": [
+    "./apps/ms-lookup"
+  ],
+  "session": {
+    "name": "ms-lookup.hof.sid"
+  }
+}

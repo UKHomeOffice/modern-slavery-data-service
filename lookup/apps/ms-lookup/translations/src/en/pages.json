@@ -1,0 +1,166 @@
+{
+  "type-of-query": {
+    "header": "What is the query about?"
+  },
+  "session": {
+    "header": "Enter your query"
+  },
+  "email": {
+    "header": "Enter the first responders email"
+  },
+  "result": {
+    "header": "Query results",
+    "sections": {
+      "your-report": {
+        "header": "First responders report"
+      },
+      "potential-victim": {
+        "header": "Potential victim"
+      },
+      "someone-else": {
+        "header": "Alternate contact for potential victim"
+      },
+      "your-details": {
+        "header": "First responders details"
+      }
+    },
+    "fields": {
+      "reference": {
+        "label": "Reference",
+        "hint": "This will not be included in the report"
+      },
+      "user-organisation": {
+        "label": "Organisaton"
+      },
+      "pv-under-age": {
+        "label": "Under 18"
+      },
+      "local-authority-contacted-about-child-local-authority-name" : {
+        "label": "Local authority name"
+      },
+      "local-authority-contacted-about-child-local-authority-phone" : {
+        "label": "Local authority phone"
+      },
+      "local-authority-contacted-about-child-local-authority-email" : {
+        "label": "Local authority email"
+      },
+      "local-authority-contacted-about-child-local-authority-contact" : {
+        "label": "Local authority contact"
+      },
+      "pv-under-age-at-time-of-exploitation" : {
+        "table-data": "Under 18 when exploited"
+      },
+      "fr-location": {
+        "label": "Location of report"
+      },
+      "types-of-exploitation": {
+        "label": "Exploitation type"
+      },
+      "where-exploitation-happened": {
+        "label": "Where were they exploited?"
+      },
+      "where-exploitation-happened-uk": {
+        "label": "Where were they exploited in the UK?"
+      },
+      "where-exploitation-happened-overseas": {
+        "label": "Where were they exploited overseas?"
+      },
+      "current-pv-location": {
+        "label": "Current location"
+      },
+      "who-exploited-pv": {
+        "label": "Details of exploiter(s)"
+      },
+      "what-happened": {
+        "label": "Victim's account"
+      },
+      "any-other-pvs": {
+        "label": "Other potential victims"
+      },
+      "reported-to-police": {
+        "label": "Reported to police"
+      },
+      "does-pv-need-support": {
+        "label": "Support requested"
+      },
+      "pv-want-to-submit-nrm": {
+        "label": "Case referred to NRM"
+      },
+      "refuse-nrm": {
+        "label": "Reason for Refusing NRM"
+      },
+      "co-operate-with-police": {
+        "label": "Permission for police to contact them"
+      },
+      "someone-else-name": {
+        "label": "Name"
+      },
+      "someone-else-email-input": {
+        "label": "Email"
+      },
+      "someone-else-contact-details": {
+        "label": "Address"
+      },
+      "pv-name": {
+        "label": "Name"
+      },
+      "pv-name-nickname": {
+        "label": "Nickname"
+      },
+      "pv-dob": {
+        "label": "Date of birth"
+      },
+      "pv-gender": {
+        "label": "Gender"
+      },
+      "pv-nationality": {
+        "label": "Country of nationality"
+      },
+      "does-pv-have-children": {
+        "label": "Children"
+      },
+      "pv-interpreter-requirements": {
+        "label": "Interpreter needed"
+      },
+      "pv-interpreter-requirements-language": {
+        "label": "Language"
+      },
+      "pv-other-help-with-communication": {
+        "label": "Other communications aids"
+      },
+      "pv-contact-details": {
+        "label": "Home address"
+      },
+      "pv-contact-details-email": {
+        "label": "Email"
+      },
+      "pv-phone-number": {
+        "label": "Permission for support provider to contact them"
+      },
+      "pv-phone-number-yes": {
+        "label": "Phone"
+      },
+      "pv-ho-reference": {
+        "label": "Home Office reference"
+      },
+      "fr-details-name": {
+        "label": "Name"
+      },
+      "fr-details-organisation": {
+        "label": "Organisation"
+      },
+      "fr-details-role": {
+        "label": "Job title"
+      },
+      "fr-details-email": {
+        "label": "Email"
+      },
+      "fr-details-phone": {
+        "label": "Telephone"
+      },
+      "fr-alternative-contact": {
+        "label": "Second contact"
+      }
+    }
+  }
+}

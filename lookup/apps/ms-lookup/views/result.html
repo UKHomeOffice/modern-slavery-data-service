@@ -1,0 +1,546 @@
+{{<partials-page}}
+  {{$page-content}}
+
+  <h2 class="details-header">{{values.resultLength}} results for query <span id="searchTerm" class="highlight">{{values.querytext}}</span></h2>
+  <ol id="results">
+  {{#values.result}}
+  <li>
+    <h2 class="details-header">{{#t}}pages.result.sections.your-report.header{{/t}}</h2>
+    <table class="result-table">
+      <tbody>
+          {{#reference}}
+          <tr>
+            <td>{{#t}}pages.result.fields.reference.label{{/t}}
+            </td>
+            <td class="no-white-space">
+                {{reference}}
+            </td>
+          </tr>
+          {{/reference}}
+      
+          {{#user-organisation}}
+          <tr>
+            <td>{{#t}}pages.result.fields.user-organisation.label{{/t}}</td>
+            <td class="no-white-space">
+                {{user-organisation}}
+            </td>
+          </tr>
+          {{/user-organisation}}
+      
+          {{#pv-under-age}}
+          <tr>
+            <td>{{#t}}pages.result.fields.pv-under-age.label{{/t}}</td>
+            <td class="no-white-space">
+                {{pv-under-age}}
+            </td>
+          </tr>
+          {{/pv-under-age}}
+      
+          {{#pv-under-age-at-time-of-exploitation}}
+          <tr>
+            <td>{{#t}}pages.result.fields.pv-under-age-at-time-of-exploitation.table-data{{/t}}</td>
+            <td class="no-white-space">
+                {{pv-under-age-at-time-of-exploitation}}
+            </td>
+          </tr>
+          {{/pv-under-age-at-time-of-exploitation}}
+      
+          {{#fr-location}}
+          <tr>
+            <td>{{#t}}pages.result.fields.fr-location.label{{/t}}</td>
+            <td class="no-white-space">
+                {{fr-location}}
+            </td>
+          </tr>
+          {{/fr-location}}
+      
+          {{#local-authority-contacted-about-child-local-authority-name}}
+          <tr>
+            <td>{{#t}}pages.result.fields.local-authority-contacted-about-child-local-authority-name.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>{{local-authority-contacted-about-child-local-authority-name}}</span>
+            </td>
+          </tr>
+          {{/local-authority-contacted-about-child-local-authority-name}}
+      
+          {{#local-authority-contacted-about-child-local-authority-phone}}
+          <tr>
+            <td>{{#t}}pages.result.fields.local-authority-contacted-about-child-local-authority-phone.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>{{local-authority-contacted-about-child-local-authority-phone}}</span>
+            </td>
+          </tr>
+          {{/local-authority-contacted-about-child-local-authority-phone}}
+      
+          {{#local-authority-contacted-about-child-local-authority-email}}
+          <tr>
+            <td>{{#t}}pages.result.fields.local-authority-contacted-about-child-local-authority-email.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>{{local-authority-contacted-about-child-local-authority-email}}</span>
+            </td>
+          </tr>
+          {{/local-authority-contacted-about-child-local-authority-email}}
+      
+          {{#local-authority-contacted-about-child-local-authority-first-name}}
+          <tr>
+            <td>{{#t}}pages.result.fields.local-authority-contacted-about-child-local-authority-contact.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>{{local-authority-contacted-about-child-local-authority-first-name}} {{local-authority-contacted-about-child-local-authority-last-name}}</span>
+            </td>
+          </tr>
+          {{/local-authority-contacted-about-child-local-authority-first-name}}
+      
+          {{#types-of-exploitation}}
+          <tr>
+            <td>{{#t}}pages.result.fields.types-of-exploitation.label{{/t}}</td>
+            <td class="no-white-space types-of-exploitation">
+              {{#types-of-exploitation-forced-to-work}}
+                <span>{{#t}}fields.types-of-exploitation-forced-to-work.label{{/t}}.</span>
+              {{/types-of-exploitation-forced-to-work}}
+              {{#types-of-exploitation-wages-taken}}
+                <span>{{#t}}fields.types-of-exploitation-wages-taken.label{{/t}}.</span>
+              {{/types-of-exploitation-wages-taken}}
+              {{#types-of-exploitation-forced-to-commit-fraud}}
+                <span>{{#t}}fields.types-of-exploitation-forced-to-commit-fraud.label{{/t}}.</span>
+              {{/types-of-exploitation-forced-to-commit-fraud}}
+              {{#types-of-exploitation-prostitution}}
+                <span>{{#t}}fields.types-of-exploitation-prostitution.label{{/t}}.</span>
+              {{/types-of-exploitation-prostitution}}
+              {{#types-of-exploitation-child-exploitation}}
+                <span>{{#t}}fields.types-of-exploitation-child-exploitation.label{{/t}}.</span>
+              {{/types-of-exploitation-child-exploitation}}
+              {{#types-of-exploitation-taken-somewhere}}
+                <span>{{#t}}fields.types-of-exploitation-taken-somewhere.label{{/t}}.</span>
+              {{/types-of-exploitation-taken-somewhere}}
+              {{#types-of-exploitation-forced-to-commit-crime}}
+                <span>{{#t}}fields.types-of-exploitation-forced-to-commit-crime.label{{/t}}.</span>
+              {{/types-of-exploitation-forced-to-commit-crime}}
+              {{#types-of-exploitation-organs-removed}}
+                <span>{{#t}}fields.types-of-exploitation-organs-removed.label{{/t}}.</span>
+              {{/types-of-exploitation-organs-removed}}
+              {{#types-of-exploitation-unpaid-household-work}}
+                <span>{{#t}}fields.types-of-exploitation-unpaid-household-work.label{{/t}}.</span>
+              {{/types-of-exploitation-unpaid-household-work}}
+              {{#other-exploitation-details}}
+                <span>{{other-exploitation-details}}.</span>
+              {{/other-exploitation-details}}
+            </td>
+          </tr>
+          {{/types-of-exploitation}}
+      
+          {{#where-exploitation-happened}}
+          <tr>
+            <td>{{#t}}pages.result.fields.where-exploitation-happened.label{{/t}}</td>
+            <td class="no-white-space">
+                {{where-exploitation-happened}}
+            </td>
+          </tr>
+          {{/where-exploitation-happened}}
+      
+          {{#where-exploitation-happened-uk-city-1}}
+          <tr>
+            <td>{{#t}}pages.result.fields.where-exploitation-happened-uk.label{{/t}}</td>
+            <td class="no-white-space">
+                <span>{{where-exploitation-happened-uk-city-1}}</span>
+                <span>{{where-exploitation-happened-uk-city-2}}</span>
+                <span>{{where-exploitation-happened-uk-city-3}}</span>
+                <span>{{where-exploitation-happened-uk-city-4}}</span>
+                <span>{{where-exploitation-happened-uk-city-5}}</span>
+                <span>{{where-exploitation-happened-uk-city-6}}</span>
+                <span>{{where-exploitation-happened-uk-city-7}}</span>
+                <span>{{where-exploitation-happened-uk-city-8}}</span>
+                <span>{{where-exploitation-happened-uk-city-9}}</span>
+                <span>{{where-exploitation-happened-uk-city-10}}</span>
+                <span>{{where-exploitation-happened-other-uk-other-location}}</span>
+            </td>
+          </tr>
+          {{/where-exploitation-happened-uk-city-1}}
+      
+          {{#where-exploitation-happened-overseas-country-1}}
+          <tr>
+            <td>{{#t}}pages.result.fields.where-exploitation-happened-overseas.label{{/t}}</td>
+            <td class="no-white-space">
+                <span>{{where-exploitation-happened-overseas-country-1}}</span>
+                <span>{{where-exploitation-happened-overseas-country-2}}</span>
+                <span>{{where-exploitation-happened-overseas-country-3}}</span>
+                <span>{{where-exploitation-happened-overseas-country-4}}</span>
+                <span>{{where-exploitation-happened-overseas-country-5}}</span>
+                <span>{{where-exploitation-happened-overseas-country-6}}</span>
+                <span>{{where-exploitation-happened-overseas-country-7}}</span>
+                <span>{{where-exploitation-happened-overseas-country-8}}</span>
+                <span>{{where-exploitation-happened-overseas-country-9}}</span>
+                <span>{{where-exploitation-happened-overseas-country-10}}</span>
+                <span>{{where-exploitation-happened-other-overseas-other-location}}</span>
+            </td>
+          </tr>
+          {{/where-exploitation-happened-overseas-country-1}}
+      
+          {{#current-pv-location-uk-city}}
+          <tr>
+            <td>{{#t}}pages.result.fields.current-pv-location.label{{/t}}</td>
+            <td class="no-white-space">
+                <span>City: {{current-pv-location-uk-city}}</span>
+                <span>Region: {{current-pv-location-uk-region}}</span>
+            </td>
+          </tr>
+          {{/current-pv-location-uk-city}}
+      
+          {{#who-exploited-pv}}
+          <tr>
+            <td>{{#t}}pages.result.fields.who-exploited-pv.label{{/t}}</td>
+            <td class="no-white-space">
+                <span>{{who-exploited-pv}}</span>
+            </td>
+          </tr>
+          {{/who-exploited-pv}}
+      
+          {{#what-happened}}
+          <tr>
+            <td>{{#t}}pages.result.fields.what-happened.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>{{what-happened}}</span>
+            </td>
+          </tr>
+          {{/what-happened}}
+      
+          {{#any-other-pvs}}
+          <tr>
+            <td>{{#t}}pages.result.fields.any-other-pvs.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>{{any-other-pvs}}</span>
+            </td>
+          </tr>
+          {{/any-other-pvs}}
+      
+          {{#reported-to-police}}
+          <tr>
+            <td>{{#t}}pages.result.fields.reported-to-police.label{{/t}}</td>
+            <td class="no-white-space">
+                <span>{{reported-to-police}}</span>
+                {{#reported-to-police-police-forces}}
+                  <span>{{reported-to-police-police-forces}}</span>
+                {{/reported-to-police-police-forces}}
+                {{#reported-to-police-crime-reference}}
+                <span>Reference: {{reported-to-police-crime-reference}}</span>
+                {{/reported-to-police-crime-reference}}
+            </td>
+          </tr>
+          {{/reported-to-police}}
+      </tbody>
+    </table>
+    
+    {{#pv-want-to-submit-nrm}}
+    <h2 class="details-header">{{#t}}pages.result.sections.potential-victim.header{{/t}}</h2>
+    <table class="result-table">
+      <tbody>
+          {{#does-pv-need-support}}
+            <tr>
+              <td>{{#t}}pages.result.fields.does-pv-need-support.label{{/t}}</td>
+              <td class="no-white-space">
+                <span>{{formattedDoesPvNeedSupport}}</span>
+              </td>
+            </tr>
+          {{/does-pv-need-support}}
+          
+          {{#pv-want-to-submit-nrm}}
+            <tr>
+              <td>{{#t}}pages.result.fields.pv-want-to-submit-nrm.label{{/t}}</td>
+              <td class="no-white-space">
+                <span>pv-want-to-submit-nrm</span>
+              </td>
+            </tr>
+          {{/pv-want-to-submit-nrm}}
+
+          {{#refuse-nrm}}
+          <tr>
+            <td>{{#t}}pages.result.fields.refuse-nrm.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>
+                  {{refuse-nrm}}
+              </span>
+            </td>
+          </tr>
+          {{/refuse-nrm}}
+
+          {{#co-operate-with-police}}
+            <tr>
+              <td>{{#t}}pages.result.fields.co-operate-with-police.label{{/t}}</td>
+              <td class="no-white-space">
+                <span>{{co-operate-with-police}}</span>
+              </td>
+            </tr>
+          {{/co-operate-with-police}}
+
+          {{#pv-name-first-name}}
+          <tr>
+            <td>{{#t}}pages.result.fields.pv-name.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>
+                {{pv-name-first-name}} {{pv-name-last-name}}
+              </span>
+            </td>
+          </tr>
+          {{/pv-name-first-name}}
+
+          {{#pv-name-nickname}}
+          <tr>
+            <td>{{#t}}pages.result.fields.pv-name-nickname.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>
+                {{pv-name-nickname}}
+              </span>
+            </td>
+          </tr>
+          {{/pv-name-nickname}}
+
+          {{#pv-dob}}
+          <tr>
+            <td>{{#t}}pages.result.fields.pv-dob.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>
+                {{pv-dob}}
+              </span>
+            </td>
+          </tr>
+          {{/pv-dob}}
+
+          {{#pv-gender}}
+          <tr>
+            <td>{{#t}}pages.result.fields.pv-gender.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>
+                {{pv-gender}}
+              </span>
+            </td>
+          </tr>
+          {{/pv-gender}}
+
+          {{#does-pv-have-children}}
+          <tr>
+            <td>{{#t}}pages.result.fields.does-pv-have-children.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>
+                {{does-pv-have-children}}
+                {{#does-pv-have-children-yes-amount}}
+                : {{does-pv-have-children-yes-amount}}
+                {{/does-pv-have-children-yes-amount}}
+              </span>
+            </td>
+          </tr>
+          {{/does-pv-have-children}}
+
+          {{#pv-nationality}}
+          <tr>
+            <td>{{#t}}pages.result.fields.pv-nationality.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>
+                {{pv-nationality}}
+                {{pv-nationality-second}}
+              </span>
+            </td>
+          </tr>
+          {{/pv-nationality}}
+
+          {{#pv-interpreter-requirements}}
+          <tr>
+            <td>{{#t}}pages.result.fields.pv-interpreter-requirements.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>
+                {{pv-interpreter-requirements}}
+                {{#pv-interpreter-requirements-language}}
+                : {{#t}}pages.result.fields.pv-interpreter-requirements-language.label{{/t}}; {{pv-interpreter-requirements-language}}
+                {{/pv-interpreter-requirements-language}}
+              </span>
+            </td>
+          </tr>
+          {{/pv-interpreter-requirements}}
+
+          {{#pv-other-help-with-communication}}
+          <tr>
+            <td>{{#t}}pages.result.fields.pv-other-help-with-communication.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>
+                {{pv-other-help-with-communication}}
+                {{#pv-other-help-with-communication-aid}}
+                : {{pv-other-help-with-communication-aid}}
+                {{/pv-other-help-with-communication-aid}}
+              </span>
+            </td>
+          </tr>
+          {{/pv-other-help-with-communication}}
+          
+
+          {{#pv-contact-details-email-check}}
+          <tr>
+            <td>{{#t}}pages.result.fields.pv-contact-details-email.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>{{pv-contact-details-email-input}}</span>
+              <span>Safe to use</span>
+            </td>
+          </tr>
+          {{/pv-contact-details-email-check}}
+
+          {{#pv-contact-details-post-check}}
+          <tr>
+            <td>{{#t}}pages.result.fields.pv-contact-details.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>{{pv-contact-details-street}}</span>
+              <span>{{pv-contact-details-town}}</span>
+              <span>{{pv-contact-details-county}}</span>
+              <span>{{pv-contact-details-postcode}}</span>
+              <span>Safe to use</span>
+            </td>
+          </tr>
+          {{/pv-contact-details-post-check}}
+
+          {{#pv-phone-number}}
+            <tr>
+              <td>{{#t}}pages.result.fields.pv-phone-number.label{{/t}}</td>
+              <td class="no-white-space">
+                <span>{{pv-phone-number}}</span>
+              </td>
+            </tr>
+          {{/pv-phone-number}}
+          {{#pv-phone-number-yes}}
+            <tr>
+              <td>{{#t}}pages.result.fields.pv-phone-number-yes.label{{/t}}</td>
+              <td class="no-white-space">
+                <span>{{pv-phone-number-yes}}</span>
+              </td>
+            </tr>
+          {{/pv-phone-number-yes}}
+          <tr>
+            <td>{{#t}}pages.result.fields.pv-ho-reference.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>
+                {{#pv-ho-reference-type}}
+                  {{pv-ho-reference-type}}
+                {{/pv-ho-reference-type}}
+                {{^pv-ho-reference-type}}
+                  No information
+                {{/pv-ho-reference-type}}
+              </span>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+    {{/pv-want-to-submit-nrm}}
+
+    {{#someone-else-first-name}}
+    <h2 class="details-header">{{#t}}pages.result.sections.someone-else.header{{/t}}</h2>
+    <table class="result-table">
+      <tbody>
+          {{#someone-else-first-name}}
+          <tr>
+            <td>{{#t}}pages.result.fields.someone-else-name.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>
+                {{someone-else-first-name}} {{someone-else-last-name}}
+              </span>
+            </td>
+          </tr>
+          {{/someone-else-first-name}}
+
+          {{#someone-else-email-input}}
+          <tr>
+            <td>{{#t}}pages.result.fields.someone-else-email-input.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>{{someone-else-email-input}}</span>
+              <span>Permission to use granted</span>
+            </td>
+          </tr>
+          {{/someone-else-email-input}}
+
+          {{#someone-else-street}}
+          <tr>
+            <td>{{#t}}pages.result.fields.someone-else-contact-details.label{{/t}}</td>
+            <td class="no-white-space">
+                <span>{{someone-else-street}}</span>
+                <span>{{someone-else-town}}</span>
+                <span>{{someone-else-county}}</span>
+                <span>{{someone-else-postcode}}</span>
+                <span>Permission to use granted</span>
+            </td>
+          </tr>
+          {{/someone-else-street}}
+      </tbody>
+    </table>
+    {{/someone-else-first-name}}
+
+    
+    <h2 class="details-header">{{#t}}pages.result.sections.your-details.header{{/t}}</h2>
+    <table class="result-table">
+      <tbody>
+          {{#fr-details-first-name}}
+          <tr>
+            <td>{{#t}}pages.result.fields.fr-details-name.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>
+                {{fr-details-first-name}} {{fr-details-last-name}}
+              </span>
+            </td>
+          </tr>
+          {{/fr-details-first-name}}
+
+          {{#user-organisation}}
+          <tr>
+            <td>{{#t}}pages.result.fields.fr-details-organisation.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>
+                {{user-organisation}}
+              </span>
+            </td>
+          </tr>
+          {{/user-organisation}}
+
+          {{#fr-details-role}}
+          <tr>
+            <td>{{#t}}pages.result.fields.fr-details-role.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>
+                {{fr-details-role}}
+              </span>
+            </td>
+          </tr>
+          {{/fr-details-role}}
+
+          <tr>
+            <td>{{#t}}pages.result.fields.fr-details-email.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>
+                {{user-email}}
+              </span>
+            </td>
+          </tr>
+
+          {{#fr-details-phone}}
+          <tr>
+            <td>{{#t}}pages.result.fields.fr-details-phone.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>
+                {{fr-details-phone}}
+              </span>
+            </td>
+          </tr>
+          {{/fr-details-phone}}
+
+          {{#fr-alternative-contact}}
+          <tr>
+            <td>{{#t}}pages.result.fields.fr-alternative-contact.label{{/t}}</td>
+            <td class="no-white-space">
+              <span>
+                {{fr-alternative-contact}}
+              </span>
+            </td>
+          </tr>
+          {{/fr-alternative-contact}}
+      </tbody>
+    </table>
+  </li>
+  {{/values.result}}
+  </ol>
+
+  {{#input-submit}}finished{{/input-submit}}
+
+  {{/page-content}}
+{{/partials-page}}

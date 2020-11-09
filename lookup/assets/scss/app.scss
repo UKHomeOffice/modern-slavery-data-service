@@ -1,0 +1,35 @@
+@import "$$theme";
+
+.phase-banner {
+  @include phase-banner(beta);
+}
+
+.result-table {
+  margin-bottom: 2em;
+
+  td{
+    width: 20%;
+    text-align: left;
+  }
+
+  td:nth-child(1) {
+    font-weight: bold;
+  }
+
+  td:nth-child(2) {
+    width: 80%;
+    // border: none;
+  }
+}
+
+#results {
+  list-style-type: decimal;
+
+  li {
+    padding-left: 2em;
+  }
+}
+
+.highlight {
+  background: yellow;
+}
