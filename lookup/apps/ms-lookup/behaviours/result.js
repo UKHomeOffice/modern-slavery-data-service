@@ -25,7 +25,20 @@ module.exports = superclass => class extends superclass {
         .then((reports) => {
           let reportsList = [];
           reports.forEach(report => {
-            reportsList.push(report.session);
+            delete report.session['csrf-secret'];
+            delete report.session.steps;
+            if (Object.values(report.session).find(element => {
+              if (typeof element === 'string') {
+                return element.includes(req.sessionModel.get('session'));
+              }
+              return false;
+            })) {
+              reportsList.push({
+                session: report.session,
+                createdAt: report.created_at,
+                updatedAt: report.updated_at
+              });
+            }
           });
           req.sessionModel.set('result', reportsList);
           req.sessionModel.set('resultLength', reportsList.length);

@@ -3,7 +3,7 @@
 // eslint-disable-next-line implicit-dependencies/no-implicit
 require('hof-theme-govuk');
 
-var $ = require('jQuery');
+var $ = require('jquery');
 
 $.extend({
   highlight: function (node, re, nodeName, className) {
@@ -66,7 +66,7 @@ $('#results').highlight($("#searchTerm").text());
 //   }).insertBefore($(el));
 // });
 
-},{"hof-theme-govuk":9,"jQuery":10}],2:[function(require,module,exports){
+},{"hof-theme-govuk":9,"jquery":10}],2:[function(require,module,exports){
 /**
  * This module adds the yellow focus border to:
  *   * labels with class block-label that are the parent element of radio buttons

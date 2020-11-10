@@ -4,10 +4,10 @@
   "description": "save and resume for hof session data",
   "main": "index.js",
   "scripts": {
-    "start": "node ./server",
+    "start": "node ./lookup/app.js",
     "alerts": "node ./alerts",
     "lookup": "node ./lookup/app.js",
-    "lookup-dev": "cd ./lookup && hof-build watch",
+    "lookup-build": "cd ./lookup && hof-build watch",
     "lint": "eslint .",
     "test": "npm run migrate && npm run seed && npm run rollback",
     "migrate": "knex migrate:latest",
