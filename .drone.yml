@@ -15,7 +15,7 @@ steps:
 
 - name: image_to_quay
   pull: if-not-exists
-  image: docker:19
+  image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
   environment:
     DOCKER_PASSWORD:
       from_secret: DOCKER_PASSWORD
@@ -33,5 +33,9 @@ steps:
   when:
     branch: master
     event: push
+
+services:
+  - name: docker
+    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
 
 ...
