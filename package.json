@@ -4,7 +4,7 @@
   "description": "save and resume for hof session data",
   "main": "index.js",
   "scripts": {
-    "start": "node ./lookup/app.js",
+    "start": "node ./server",
     "alerts": "node ./alerts",
     "lookup": "node ./lookup/app.js",
     "lookup-build": "cd ./lookup && hof-build watch",
