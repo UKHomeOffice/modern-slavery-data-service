@@ -10,7 +10,7 @@ steps:
   commands:
     - npm audit --production --audit-level=moderate
   when:
-    branch: [ master, features/* ]
+    branch: [ master, feature/* ]
     event: push
 
 - name: image_to_quay
@@ -27,9 +27,15 @@ steps:
     - docker tag server-$${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/modern-slavery-data-service:server-$${DRONE_COMMIT_SHA}
     - docker tag alerts-$${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/modern-slavery-data-service:alerts-$${DRONE_COMMIT_SHA}
     - docker tag lookup-$${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/modern-slavery-data-service:lookup-$${DRONE_COMMIT_SHA}
+    - docker tag server-$${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/modern-slavery-data-service:server-latest
+    - docker tag alerts-$${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/modern-slavery-data-service:alerts-latest
+    - docker tag lookup-$${DRONE_COMMIT_SHA} quay.io/ukhomeofficedigital/modern-slavery-data-service:lookup-latest
     - docker push quay.io/ukhomeofficedigital/modern-slavery-data-service:server-$${DRONE_COMMIT_SHA}
     - docker push quay.io/ukhomeofficedigital/modern-slavery-data-service:alerts-$${DRONE_COMMIT_SHA}
     - docker push quay.io/ukhomeofficedigital/modern-slavery-data-service:lookup-$${DRONE_COMMIT_SHA}
+    - docker push quay.io/ukhomeofficedigital/modern-slavery:server-latest
+    - docker push quay.io/ukhomeofficedigital/modern-slavery:alerts-latest
+    - docker push quay.io/ukhomeofficedigital/modern-slavery:lookup-latest
   when:
     branch: master
     event: push
