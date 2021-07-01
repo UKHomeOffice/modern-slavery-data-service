@@ -33,9 +33,10 @@ steps:
     - docker push quay.io/ukhomeofficedigital/modern-slavery-data-service:server-$${DRONE_COMMIT_SHA}
     - docker push quay.io/ukhomeofficedigital/modern-slavery-data-service:alerts-$${DRONE_COMMIT_SHA}
     - docker push quay.io/ukhomeofficedigital/modern-slavery-data-service:lookup-$${DRONE_COMMIT_SHA}
-    - docker push quay.io/ukhomeofficedigital/modern-slavery:server-latest
-    - docker push quay.io/ukhomeofficedigital/modern-slavery:alerts-latest
-    - docker push quay.io/ukhomeofficedigital/modern-slavery:lookup-latest
+    - docker push quay.io/ukhomeofficedigital/modern-slavery-data-service:server-latest
+    - docker push quay.io/ukhomeofficedigital/modern-slavery-data-service:alerts-latest
+    - docker push quay.io/ukhomeofficedigital/modern-slavery-data-service:lookup-latest
+
   when:
     branch: master
     event: push
