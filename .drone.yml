@@ -4,14 +4,14 @@ name: default
 type: kubernetes
 
 steps:
-- name: npm-audit
-  pull: if-not-exists
-  image: node:12
-  commands:
-    - npm audit --production --audit-level=moderate
-  when:
-    branch: [ master, feature/* ]
-    event: push
+#- name: npm-audit
+#  pull: if-not-exists
+#  image: node:12
+#  commands:
+#    - npm audit --production --audit-level=moderate
+#  when:
+#    branch: [ master, feature/* ]
+#    event: push
 
 - name: image_to_quay
   pull: if-not-exists
